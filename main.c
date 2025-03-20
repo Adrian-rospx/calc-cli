@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-void removeWhitespace(char** text);
+void removeWhitespace(char* text);
 
 int main() {
     char* input = (char*)malloc(100 * sizeof(char));
@@ -13,25 +13,23 @@ int main() {
 
     printf("%s\n", input);
 
+    free(input);
     return 0;
 }
 
 // remove all whitespace from the string input
-void removeWhitespace(char **text) {
-    // works using strtok to add 
-    // all words ignoring whitespace
-    char copy[100];
-    char result[100];
-    result[0] = 0;
-
-    strcpy(copy, *text);
-
-    char* ptr;
-    ptr = strtok(copy, " \n\t");
-    while(ptr != NULL) {
-        strcat(result, ptr);
-        ptr = strtok(NULL, " \n\t");
+void removeWhitespace(char *text) {
+    // works using two pointers traversing the string.
+    //  one copies if the condition is met
+    //  and the other one traverses
+    char* dest = text;
+    for(char* source = text; *source!='\0'; source++) {
+        // when not a whitespace, a character is placed
+        // in the original string
+        if(!strchr(" \n\t", *source)) {
+            *dest = *source;
+            dest++;
+        }
     }
-
-    *text = result;
+    *dest = '\0';
 }

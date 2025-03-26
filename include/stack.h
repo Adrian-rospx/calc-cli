@@ -3,12 +3,19 @@
  *  for implementing postfix conversion
  */
 
+#ifndef STACK_H
+#define STACK_H
+
 typedef struct Stack {
     char stk[30][10];
-    int top = 0;
-    int size = 30;
+    int top;
+    int size;
 }Stack;
 
-void stk_push(Stack stack, char* str);
-void stk_pop(Stack stack);
-void stk_top(Stack stack);
+// basic functions:
+void stkInit(Stack stack);
+void stkPush(Stack stack, char* str);
+void stkPop(Stack stack);
+char* stkTop(Stack stack);
+
+#endif

@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "include/tokenMat.h"
-#include "include/tokenize.h"
+#include "tokenMat.h"
+#include "tokenize.h"
 
 int main() {
     char* input = malloc(100 * sizeof(char));

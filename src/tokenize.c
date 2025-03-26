@@ -5,9 +5,9 @@
 #include <string.h>
 #include <ctype.h>
 
-#include "../include/tokenMat.h"
+#include "tokenMat.h"
 
-#include "../include/tokenize.h"
+#include "tokenize.h"
 
 void tokenize(TokenMat* tk, char* text);
 

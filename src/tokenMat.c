@@ -2,7 +2,7 @@
 
 #include <stdlib.h>
 
-#include "../include/tokenMat.h"
+#include "tokenMat.h"
 
 // initialises the token array, token size = 10 chars!
 void tokensInit(TokenMat* tk, int dim) {

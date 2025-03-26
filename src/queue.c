@@ -1,10 +1,9 @@
 #include <stdlib.h>
 #include <string.h>
-#include <stdio.h>
 
 #include "queue.h"
 
-// initialise queue
+// initialize queue
 void queueInit(Queue* queue) {
     queue->size = 0;
     queue->head = NULL;
@@ -46,21 +45,4 @@ void dequeue(Queue* queue) {
 // get the first item in the queue
 char* queueFront(Queue queue) {
     return queue.head->str;
-}
-
-int main() {
-    Queue q;
-
-    queueInit(&q);
-
-    enqueue(&q, "caca");
-    enqueue(&q, "haram");
-    
-    printf("%s\n", queueFront(q));
-    printf("%s\n", q.tail->str);
-
-    dequeue(&q);
-    printf("%s\n", queueFront(q));
-
-    return 0;
 }

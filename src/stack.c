@@ -1,23 +1,41 @@
 // stack array basic functions
 #include <string.h>
+#include <stdio.h>
 
 #include "stack.h"
 
 // start the stack values
-void stkInit(Stack stack) {
-    stack.size = 0;
-    stack.top = -1;
+void stkInit(Stack* stack) {
+    stack->size = 0;
 }
 // add a string on to the stack
-void stkPush(Stack stack, char *str) {
-    strcpy(stack.stk[stack.top], str);
-    stack.top++;
+void stkPush(Stack* stack, char *str) {
+    strcpy(stack->stk[stack->size], str);
+    stack->size++;
+    // handle stack overflow?
 }
 // pop off a string from stack
-void stkPop(Stack stack) {
-    stack.top--;
+void stkPop(Stack* stack) {
+    stack->size--;
+    // handle stack underflow?
 }
 // get top string
-char* stkTop(Stack stack) {
-    return stack.stk[stack.top];
+char* stkTop(Stack* stack) {
+    printf("%s\n", stack->stk[stack->size-1]);
+    return stack->stk[stack->size-1];
+}
+
+int main() {
+
+    Stack s;
+    stkInit(&s);
+    stkPush(&s, "hello");
+    stkPush(&s, "niagara");
+
+    printf("%s\n", stkTop(&s));
+
+    stkPop(&s);
+    printf("%s\n", stkTop(&s));
+
+    return 0;
 }

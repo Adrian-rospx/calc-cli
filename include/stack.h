@@ -8,14 +8,13 @@
 
 typedef struct Stack {
     char stk[30][10];
-    int top;
     int size;
-}Stack;
+} Stack;
 
 // basic functions:
-void stkInit(Stack stack);
-void stkPush(Stack stack, char* str);
-void stkPop(Stack stack);
-char* stkTop(Stack stack);
+void stkInit(Stack* stack);
+void stkPush(Stack* stack, char* str);
+void stkPop(Stack* stack);
+char* stkTop(Stack* stack);
 
 #endif

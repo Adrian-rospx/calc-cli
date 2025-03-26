@@ -6,6 +6,7 @@
 #include <ctype.h>
 
 #include "../include/tokenMat.h"
+
 #include "../include/tokenize.h"
 
 void tokenize(TokenMat* tk, char* text);
@@ -46,7 +47,7 @@ void splitTokens(TokenMat* tk, char *text) {
             ptr--;  // account for extra increment
         }
         // handle operators:
-        else if(strchr("+-*/()", *ptr)) {
+        else if(strchr("+-*/^()", *ptr)) {
             tk->mat[i][0] = *ptr;
             tk->mat[i][1] = '\0';
             i++;
@@ -57,7 +58,7 @@ void splitTokens(TokenMat* tk, char *text) {
 
 // initialise tokenmat, remove whitespace and split up into the tokens 
 void tokenize(TokenMat* tk, char* text) {
-    tokensInit(tk, 20);
+    tokensInit(tk, 30);
 
     removeWhitespace(text);
     splitTokens(tk, text);

@@ -1,4 +1,6 @@
-// token array for easier manipulation
+/*
+ *  Creates a struct useful for storing tokens when processing
+ */
 
 #ifndef TOKEN_MAT_H
 #define TOKEN_MAT_H

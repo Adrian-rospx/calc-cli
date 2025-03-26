@@ -1,6 +1,5 @@
-/*
- *  Creates a struct useful for storing tokens when processing
- */
+// token mat implementation
+
 #include <stdlib.h>
 
 #include "../include/tokenMat.h"

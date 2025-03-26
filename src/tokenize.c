@@ -4,6 +4,7 @@
 
 #include <string.h>
 #include <ctype.h>
+
 #include "../include/tokenize.h"
 
 // remove all whitespace from the string input

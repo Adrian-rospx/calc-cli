@@ -5,8 +5,9 @@
 
 int main() {
     char* input = (char*)malloc(100 * sizeof(char));
-    char tokens[20][10];
 
+    char tokens[20][10];
+    
     fgets(input, 100, stdin);
 
     removeWhitespace(input);
@@ -19,5 +20,7 @@ int main() {
     }
 
     free(input);
+    input = NULL;
+
     return 0;
 }

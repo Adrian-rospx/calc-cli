@@ -19,6 +19,7 @@ typedef struct Queue{
 // basic queue operations
 void queueInit(Queue* queue);
 void enqueue(Queue* queue, char* str);
+void dequeue(Queue* queue);
 char* queueFront(Queue queue);
 
 #endif

@@ -3,6 +3,7 @@
 
 #include "tokenMat.h"
 #include "tokenize.h"
+#include "postfix.h"
 
 int main() {
     char* input = malloc(100 * sizeof(char));
@@ -15,6 +16,12 @@ int main() {
 
     printf("%s\n", input);
 
+    for(int i = 0; i < tokens.size; i++) {
+        printf("%s\n", tokens.mat[i]);
+    }
+
+    // convert to prefix
+    toPostfix(&tokens);
     for(int i = 0; i < tokens.size; i++) {
         printf("%s\n", tokens.mat[i]);
     }

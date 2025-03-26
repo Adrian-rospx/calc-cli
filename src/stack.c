@@ -20,6 +20,5 @@ void stkPop(Stack* stack) {
 }
 // get top string
 char* stkTop(Stack* stack) {
-    printf("%s\n", stack->stk[stack->size-1]);
     return stack->stk[stack->size-1];
 }

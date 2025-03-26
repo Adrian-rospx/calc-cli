@@ -35,7 +35,7 @@ void toPostfix(TokenMat* tokens) {
 
     for(int i = 0; i<tokens->size; i++) {
         char* arr = tokens->mat[i];
-        if(isdigit(arr)) {
+        if(isdigit(*arr)) {
             enqueue(&queue, arr);
         }
         else if(!strcmp(arr, "("))
@@ -68,6 +68,22 @@ void toPostfix(TokenMat* tokens) {
         }
     }
     // now the queue contains the whole postfix notation
+
+    // put all stack items into queue
+    while(stack.size != 0) {
+        enqueue(&queue, stkTop(&stack));
+        stkPop(&stack);
+    }
+
     TokenMat newtokens;
     tokensInit(&newtokens, 30);
+    // put queue items into tokenmat
+    int i = 0;
+    while(queue.size != 0) {
+        newtokens.mat[i] = queueFront(queue);
+        dequeue(&queue);
+    }
+    newtokens.size = i+1;
+    tokenFree(tokens);
+    *tokens = newtokens;
 }

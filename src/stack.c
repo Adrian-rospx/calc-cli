@@ -1,6 +1,5 @@
 // stack array basic functions
 #include <string.h>
-#include <stdio.h>
 
 #include "stack.h"
 
@@ -23,19 +22,4 @@ void stkPop(Stack* stack) {
 char* stkTop(Stack* stack) {
     printf("%s\n", stack->stk[stack->size-1]);
     return stack->stk[stack->size-1];
-}
-
-int main() {
-
-    Stack s;
-    stkInit(&s);
-    stkPush(&s, "hello");
-    stkPush(&s, "niagara");
-
-    printf("%s\n", stkTop(&s));
-
-    stkPop(&s);
-    printf("%s\n", stkTop(&s));
-
-    return 0;
 }

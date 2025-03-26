@@ -1,3 +1,4 @@
+// linked list queue basic
 #include <stdlib.h>
 #include <string.h>
 
@@ -46,3 +47,5 @@ void dequeue(Queue* queue) {
 char* queueFront(Queue queue) {
     return queue.head->str;
 }
+
+// free memory!!!

@@ -1,24 +1,26 @@
-#include "include/tokenize.h"
-
 #include <stdio.h>
 #include <stdlib.h>
 
-int main() {
-    char* input = (char*)malloc(100 * sizeof(char));
+#include "include/tokenMat.h"
+#include "include/tokenize.h"
 
-    char tokens[20][10];
-    
+int main() {
+    char* input = malloc(100 * sizeof(char));
+
     fgets(input, 100, stdin);
 
-    removeWhitespace(input);
-    tokenize(tokens, input);
+    // function to split up text into tokens
+    TokenMat tokens;
+    tokenize(&tokens, input);
 
     printf("%s\n", input);
 
-    for(int i = 0; tokens[i][0] != '\0'; i++) {
-        printf("%s\n", tokens[i]);
+    for(int i = 0; i < tokens.size; i++) {
+        printf("%s\n", tokens.mat[i]);
     }
 
+    // always free up the memory!
+    tokenFree(&tokens);
     free(input);
     input = NULL;
 

@@ -6,9 +6,10 @@
 typedef struct TokenMat{
     char** mat;
     int size;
+    int alloc;
 } TokenMat;
 
-void tokensInit(TokenMat tk, int size);
-void tokenFree(TokenMat tk);
+void tokensInit(TokenMat* tk, int size);
+void tokenFree(TokenMat* tk);
 
 #endif

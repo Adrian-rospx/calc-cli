@@ -11,15 +11,12 @@
 void toPostfix(TokenMat* tokens);
 
 // check if last item in stack has precedence over current one
-int precedence(char* str, Stack stack) {
+int precedence(char oper, Stack stack) {
     if(stack.size == 0) {
         return 0;
     }
-    if(strchr("*/", str[0])) {
-        return 0;
-    }
     // precedence for */ over +-
-    if(strchr("+-", str[0]) && strchr("*/", stkTop(&stack)[0])) {
+    if(strchr("+-", oper) && strchr("*/", stkTop(&stack)[0])) {
         return 1;
     }
     return 0;
@@ -38,11 +35,12 @@ void toPostfix(TokenMat* tokens) {
         if(isdigit(*arr)) {
             enqueue(&queue, arr);
         }
-        else if(!strcmp(arr, "("))
+        // just add the left paranthesis
+        else if(arr[0] == '(')
             stkPush(&stack, arr);
         // handle operators:
         else if(strchr("+-*/", arr[0])) {
-            if(precedence(arr, stack)) {
+            if(precedence(arr[0], stack)) {
                 // pop value from stack
                 char* op = stkTop(&stack);
                 stkPop(&stack);
@@ -54,8 +52,9 @@ void toPostfix(TokenMat* tokens) {
             else
                 stkPush(&stack, arr);
         }
-        // when a right parathesis is found pop from stack until (
-        else if(!strcmp(arr, ")")) {
+        // when a right parathesis is found pop 
+        // from stack until '(' is found
+        else if(arr[0] == ')') {
             while(!strchr(stkTop(&stack), '(')) {
                 // pop from stack
                 char* op = stkTop(&stack);
@@ -82,8 +81,9 @@ void toPostfix(TokenMat* tokens) {
     while(queue.size != 0) {
         newtokens.mat[i] = queueFront(queue);
         dequeue(&queue);
+        i++;
     }
-    newtokens.size = i+1;
+    newtokens.size = i;
     tokenFree(tokens);
     *tokens = newtokens;
 }

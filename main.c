@@ -14,13 +14,12 @@ int main() {
     TokenMat tokens;
     tokenize(&tokens, input);
 
-    printf("%s\n", input);
-
     for(int i = 0; i < tokens.size; i++) {
-        printf("%s\n", tokens.mat[i]);
+        printf("%s", tokens.mat[i]);
     }
+    printf("\n");
 
-    // convert to prefix
+    // convert to postfix
     toPostfix(&tokens);
     for(int i = 0; i < tokens.size; i++) {
         printf("%s ", tokens.mat[i]);

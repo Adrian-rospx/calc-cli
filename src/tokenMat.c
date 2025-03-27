@@ -24,5 +24,8 @@ void tokenFree(TokenMat* tk) {
         free(tk->mat[i]);
     }
     free(tk->mat);
+    
     tk->mat = NULL;
+    tk->alloc = 0;
+    tk->size = 0;
 }

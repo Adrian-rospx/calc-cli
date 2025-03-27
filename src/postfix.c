@@ -10,17 +10,14 @@
 
 void toPostfix(TokenMat* tokens);
 
-// check if last item in stack has precedence over current one
-int precedence(char oper, Stack* stack) {
-    if(stack->size == 0)
-        return 0;
-    // precedence for ^ over /*
-    if(strchr("+-", oper) && strchr("^*/", stkTop(stack)[0]))
+// return an intager indicating operator precedence
+int precedence(char oper) {
+    if(oper == '+' || oper == '-')
         return 1;
-    // precedence for */^ over +-
-    if(strchr("*/", oper) && strchr("^", stkTop(stack)[0]))
-        return 1;
-    return 0;
+    else if(oper == '*' || oper == '/')
+        return 2;
+    else if(oper == '^')
+        return 3;
 }
 
 void toPostfix(TokenMat* tokens) {
@@ -40,26 +37,14 @@ void toPostfix(TokenMat* tokens) {
         // handle operators:
         else if(strchr("+-*/^", arr[0])) {
             // ensure operators with precedence are first in stack
-            if(precedence(arr[0], &stack)) {
-                // find the same priority operator
-                char rev;
-                switch(arr[0]) {    
-                    case '+': rev = '-'; break;
-                    case '-': rev = '+'; break;
-                    case '*': rev = '/'; break;
-                    case '/': rev = '*'; break;
-                    case '^': rev = '^'; break;
-                }
-                // pop until a same priority operator is found
-                do {
-                    // pop value from stack
-                    char* op = stkTop(&stack);
-                    stkPop(&stack);
-                    // enqueue it
-                    enqueue(&queue, op);
-                }while(stkTop(&stack)[0] != arr[0] &&
-                       stkTop(&stack)[0] != rev &&
-                       stack.size != 0);
+            if(precedence(arr[0]) < precedence(stkTop(&stack)[0])) 
+            while(precedence(arr[0]) <= precedence(stkTop(&stack)[0])
+                  && stack.size != 0){
+                // pop value from stack
+                char* op = stkTop(&stack);
+                stkPop(&stack);
+                // enqueue it
+                enqueue(&queue, op);
             }
             // push symbol
             stkPush(&stack, arr);
@@ -82,7 +67,6 @@ void toPostfix(TokenMat* tokens) {
         }
     }
     // now the queue contains the whole postfix notation
-
     // put all stack items into queue
     while(stack.size != 0) {
         enqueue(&queue, stkTop(&stack));

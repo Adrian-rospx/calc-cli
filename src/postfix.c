@@ -79,7 +79,7 @@ void toPostfix(TokenMat* tokens) {
     // put queue items into tokenmat
     int i = 0;
     while(queue.size != 0) {
-        newtokens.mat[i] = queueFront(queue);
+        strcpy(newtokens.mat[i], queueFront(queue));
         dequeue(&queue);
         i++;
     }

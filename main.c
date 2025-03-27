@@ -23,7 +23,7 @@ int main() {
     // convert to prefix
     toPostfix(&tokens);
     for(int i = 0; i < tokens.size; i++) {
-        printf("%s\n", tokens.mat[i]);
+        printf("%s ", tokens.mat[i]);
     }
 
     // always free up the memory!

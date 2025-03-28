@@ -11,13 +11,15 @@
 void toPostfix(TokenMat* tokens);
 
 // return an intager indicating operator precedence
-int precedence(char oper) {
-    if(oper == '+' || oper == '-')
+int precedence(char operator) {
+    if(operator == '+' || operator == '-')
         return 1;
-    else if(oper == '*' || oper == '/')
+    else if(operator == '*' || operator == '/')
         return 2;
-    else if(oper == '^')
+    else if(operator == '^')
         return 3;
+    else 
+        return 0;
 }
 
 void toPostfix(TokenMat* tokens) {
@@ -55,7 +57,7 @@ void toPostfix(TokenMat* tokens) {
         // when a right parathesis is found pop 
         // from stack until '(' is found
         else if(arr[0] == ')') {
-            while(!strchr(stkTop(&stack), '(')) {
+            while(stkTop(&stack)[0] != '(') {
                 // pop from stack
                 char* op = stkTop(&stack);
                 stkPop(&stack);

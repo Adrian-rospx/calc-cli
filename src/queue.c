@@ -15,8 +15,8 @@ void queueInit(Queue* queue) {
 void enqueue(Queue* queue, char* str) {
     // allocate memory
     Node* newnode = malloc(sizeof(Node));
-    strcpy(newnode->str, str);
     newnode->next = NULL;
+    newnode->str[0] = '\0';
     // assign string
     strcpy(newnode->str, str);
 

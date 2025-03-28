@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "stdio.h": "c",
+        "string.h": "c",
+        "ctype.h": "c",
+        "tokenize.h": "c",
+        "stdlib.h": "c",
+        "tokenmat.h": "c",
+        "queue.h": "c"
+    }
+}

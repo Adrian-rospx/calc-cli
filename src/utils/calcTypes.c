@@ -1,6 +1,8 @@
 // token and number conversion
 #include <string.h>
 
+#include "calcTypes.h"
+
 int isOperator(char token) {
     if(strchr("+-*/^()", token));
         return 1;
@@ -27,4 +29,18 @@ int convertToInt(char* token) {
         num += digit;
     }
     return num;
+}
+
+void convertIntToStr(char* str, int num) {
+    str[0] = '\0';
+    while(num!=0) {
+        // extract last digit 
+        int dig = num%10;
+        char digc = dig - '0';
+        if(dig == 0) digc = '0';
+        // add the last digit
+        strcat(str, &digc);
+        num/=0;
+    }
+    strrev(str);
 }

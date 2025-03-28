@@ -13,10 +13,11 @@
                 "-I", "include/utils",
                 "src/tokenize.c",   // use source files
                 "src/tokenMat.c",
-                "src/utils/stack.c","src/utils/queue.c",
-                "src/postfix.c",
+                "src/postfix.c", "src/evaluate.c",
+                "src/utils/stack.c","src/utils/queue.c", // utils
+                "src/utils/calcTypes.c",
                 "main.c",           
-                "-o", "main.exe"    // setup the executable
+                "-o", "main.exe"    // setup the output executable
             ],
             "options": {
                 "cwd": "${workspaceFolder}"

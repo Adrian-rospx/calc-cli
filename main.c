@@ -4,6 +4,7 @@
 #include "tokenMat.h"
 #include "tokenize.h"
 #include "postfix.h"
+#include "evaluate.h"
 
 int main() {
     char* input = malloc(100 * sizeof(char));
@@ -29,6 +30,13 @@ int main() {
         printf("%s ", tokens.mat[i]);
     } 
     printf("\n");
+
+    // evaluate the postfix expression
+    result = evaluate(tokens);
+    
+    // output result:
+    printf("Final result:\n");
+    printf("%d\n", result);
 
     // always free up the memory!
     tokenFree(&tokens);

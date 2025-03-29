@@ -31,7 +31,8 @@ int operate(char* a, char* b, char operator) {
 int evaluate(TokenMat tokens) {
     // use a stack to evaluate each token
     Stack stack;
-    int result;
+    stkInit(&stack);
+    int result = 0;
 
     for(int i = 0; i < tokens.size; i++) {
         // numbers are added to the stack
@@ -41,14 +42,18 @@ int evaluate(TokenMat tokens) {
         // two items are popped and operated on
         // when an operator is found
         else if(isOperator(tokens.mat[i][0])) {
-            char itemB[10] = stkTop(&stack);
+            char itemB[10];
+            strcpy(itemB, stkTop(&stack));
             stkPop(&stack);
-            char itemA[10] = stkTop(&stack);
+
+            char itemA[10];
+            strcpy(itemA, stkTop(&stack));
             stkPop(&stack);
             // perform operation
             int num = operate(itemA, itemB, tokens.mat[i][0]);
             // convert result to a string
             char res[10];
+            res[0] = '\0';
             convertIntToStr(res, num);
             // add result back on the stack
             stkPush(&stack, res);

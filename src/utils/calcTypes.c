@@ -36,11 +36,13 @@ void convertIntToStr(char* str, int num) {
     while(num!=0) {
         // extract last digit 
         int dig = num%10;
-        char digc = dig - '0';
+        char digc = dig + '0';
         if(dig == 0) digc = '0';
+        char digs[2] = {digc};
         // add the last digit
-        strcat(str, &digc);
-        num/=0;
+        strcat(str, digs);
+
+        num/=10;
     }
     strrev(str);
 }

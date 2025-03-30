@@ -11,6 +11,7 @@ int main() {
     TokenMat tokens;
     int result;
 
+    printf("Type in a mathematical expression:\n");
     fgets(input, 100, stdin);
 
     // function to split up text into tokens
@@ -36,7 +37,7 @@ int main() {
     
     // output result:
     printf("Final result:\n");
-    printf("%d\n", result);
+    printf("= %d\n", result);
 
     // always free up the memory!
     tokenFree(&tokens);

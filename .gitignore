@@ -1,4 +1,8 @@
 #/.vscode
 
 *.exe
+
+# compiler outputs
+*.ilk
+*.pdb
 *.o

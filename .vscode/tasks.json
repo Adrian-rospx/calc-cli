@@ -4,10 +4,10 @@
             // I just learned how to edit the tasks file
             "type": "cppbuild",
             "label": "build",
-            "command": "C:\\msys64\\ucrt64\\bin\\gcc.exe",
+            "command": "C:\\Program Files\\LLVM\\bin\\clang.exe",
             // This configures the gcc compiler commands:
+            // recently changed to clang for experience
             "args": [
-                "-fdiagnostics-color=always",
                 "-g",               // enables debugging
                 "-I", "include",    // include headers
                 "-I", "include/utils",

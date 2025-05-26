@@ -4,7 +4,7 @@
 #include "calcTypes.h"
 
 int isOperator(char token) {
-    if(strchr("+-*/^()", token));
+    if(strchr("+-*/^()", token))
         return 1;
     return 0;
 }
@@ -31,6 +31,22 @@ int convertToInt(char* token) {
     return num;
 }
 
+// strrev replacement for linux
+char* strrev_me(char *str) {
+    if (!str) return NULL;
+
+    int i = 0;
+    int j = strlen(str) - 1;
+    while (i < j) {
+        char tmp = str[i];
+        str[i] = str[j];
+        str[j] = tmp;
+        i++;
+        j--;
+    }
+    return str;
+}
+
 void convertIntToStr(char* str, int num) {
     str[0] = '\0';
     while(num!=0) {
@@ -44,5 +60,5 @@ void convertIntToStr(char* str, int num) {
 
         num/=10;
     }
-    strrev(str);
+    str = strrev_me(str);
 }

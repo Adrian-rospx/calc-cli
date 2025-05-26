@@ -40,14 +40,14 @@ void toPostfix(TokenMat* tokens) {
         else if(strchr("+-*/^", arr[0])) {
             // ensure operators with precedence are first in stack
             if(precedence(arr[0]) < precedence(stkTop(&stack)[0])) 
-            while(precedence(arr[0]) <= precedence(stkTop(&stack)[0])
-                  && stack.size != 0){
-                // pop value from stack
-                char* op = stkTop(&stack);
-                stkPop(&stack);
-                // enqueue it
-                enqueue(&queue, op);
-            }
+                while(precedence(arr[0]) <= precedence(stkTop(&stack)[0])
+                    && stack.size != 0){
+                    // pop value from stack
+                    char* op = stkTop(&stack);
+                    stkPop(&stack);
+                    // enqueue it
+                    enqueue(&queue, op);
+                }
             // push symbol
             stkPush(&stack, arr);
         }

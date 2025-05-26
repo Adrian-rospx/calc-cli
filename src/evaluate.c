@@ -24,7 +24,9 @@ int operate(char* a, char* b, char operator) {
     case '/':
         return numA / numB;
     case '^':
-        return pow(numA, numB);
+        return (int)pow(numA, numB);
+    default:
+        return 0;
     }
 }
 

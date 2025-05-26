@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 4.0.0)
 
-project(calc_cli VERSION 1.0.1 LANGUAGES C)
+project(calc-cli VERSION 1.0.1 LANGUAGES C)
 
 set(CMAKE_C_STANDARD 17)
 
@@ -15,9 +15,12 @@ set(SOURCES
     "src/utils/calcTypes.c"
 )
 
-add_executable(calc_cli ${SOURCES})
-target_include_directories(calc_cli 
+add_executable(calc-cli ${SOURCES})
+target_include_directories(calc-cli 
     PRIVATE 
         include 
         include/utils
 )
+if(UNIX) # including the math library for linux
+    target_link_libraries(calc-cli m)
+endif()
